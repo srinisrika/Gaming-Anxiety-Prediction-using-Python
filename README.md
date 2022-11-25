@@ -7,9 +7,9 @@
 * [About The Project](#about-the-project)
 * [Data Sources](#data-sources)
 * [Data Description](#data-description)
-* [Data Mining Tasks](#data-mining)
-* [Model Exploration and Model Selection](#model-exploration-selection)
-* [Impact of the Project Outcomes](#impact-project-outcomes)
+* [Data Mining Tasks](#data-mining-tasks)
+* [Model Exploration and Model Selection](#model-exploration-and-model-selection)
+* [Impact of the Project Outcomes](#impact-of-the-project-outcomes)
     
   </ol>
 </details>
