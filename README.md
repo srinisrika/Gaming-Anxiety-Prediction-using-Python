@@ -5,23 +5,12 @@
   <ol>
     
 * [About The Project](#about-the-project)
-* [Motivation](#motivation)
-* [Technical Aspect](#technical-aspect)
-* [Built With](#built-with)
-* [Getting Started](#getting-started)
-* [Prerequisites](#prerequisites)
-* [Working](#working)
-* [Dataset](#dataset)
-* [Usage: A Glimpse of Heroku Web app](#usage-a-glimpse-of-heroku-web-app)
-* [Deployement on Heroku](#deployement-on-heroku)
-* [Roadmap: Directory Tree](#roadmap-directory-tree)
-* [Bug / Feature Request](#bug-/-feature-request)
-* [Contributing](#contributing)
-* [License](#license)
-* [And it's done!](#and-it's-done!)
-* [Acknowledgments](#acknowledgments)
-* [Author](#author)
-* [Future Scope](#future-scope)    
+* [Data Sources](#data-sources)
+* [Data Description](#data-description)
+* [Data Mining Tasks](#data-mining)
+* [Model Exploration and Model Selection](#model-exploration-selection)
+* [Impact of the Project Outcomes](#impact-project-outcomes)
+    
   </ol>
 </details>
 
@@ -82,15 +71,15 @@ designed to measure global cognitive judgments of satisfaction with one’s life
 - SPIN_T - SPIN Total Score
 - GAD_T - GAD Total Score
 
-## Data Mining tasks
+## Data Mining Tasks
 
-1. Data Understanding:
+### 1. Data Understanding:
 
 Around 13500 participants, between the age 18 and 63 years completed the survey. Participants
 resided in 109 different countries with most of the participants coming from the USA, Germany,
 the UK, and Canada.
 
-2. Data Cleaning and Pre-processing:
+### 2. Data Cleaning and Pre-processing:
 
 The dataset has 13464 rows and 55 columns. On examination, 29 columns were found to have null
 values. The attribute ‘highestleague’ was dropped as it was unnecessary and had more than 75%
@@ -108,28 +97,28 @@ with the category “Unknown”.
 As an outcome of the cleaning and pre-processing of the data, the dataset has a remaining of 50
 columns and 13458 rows carrying out further data mining steps.
 
-3. Data Exploration and Visualization:
+### 3. Data Exploration and Visualization:
 
-* Relation between the attributes
+* **Relation between the attributes**
 To check the relation between each data we plotted correlation plot which explains the values near
 to 1 are highly correlated. As we can see in the above plot, the SPIN and GAD have 0.45 which
 says that people with high Social Phobia Inventory scores tend to have the General Anxiety
 Disorder. 
 
-* Distribution of GAD and SPIN scores for all the age groups
+* **Distribution of GAD and SPIN scores for all the age groups**
 A scatter plot is plotted to see how male, female, and other genders are affected by GAD and SPIN.
 From the below plots we can conclude that Males are affected from the anxiety disorder as the
 frequency of Males are distributed over all the age groups. Female are not at all affected after around
 the age 35. 
 
-* Hours spent based on Employment Status and Gender
+* **Hours spent based on Employment Status and Gender**
 We plotted a Tree map to visualize the player’s employment status. Male players are dominating
 and the players who go to College/ University are the ones who play online games more ( total of
 around 138714 hours spent). Players who are unemployed stream the game for the total of 34775
 hours. From the map we can conclude that players who are unemployed spend less time on online
 games compared to the students and employed ones.
 
-* Impact of SPIN and SWL by hours
+* **Impact of SPIN and SWL by hours**
 We have plotted Box plots to show the effect of SPIN and SWL by number of hours the online
 game is player. Here we have taken the X- axis by grouping 10 hours interval. From the first plot
 we can see that Social Phobia Inventory score is highest for the players who stream for an average
@@ -137,11 +126,11 @@ of 60 hours, and it is less for the players who stream for 10 hours.
 In the second plot, we have considered the satisfaction with life scores, which is highest for the
 players who stream for 10 hours. 
 
-* Players from different educational degrees
+* **Players from different educational degrees**
 To find the player’s educational background, we plotted the bar chart. The players who just have
 High school diploma tend to play more compared to any other degrees.
 
-* GAD score across the World
+* **GAD score across the World**
 To see which countries, have the most General Anxiety Disorder we have plotted a world map.
 From the map we can see that the players of Russia and USA have the most Anxiety scores
 compared to any other countries
@@ -152,7 +141,7 @@ compared to any other countries
 A new column ‘GAD_cat’ is created using ‘GAD_T’ values classifying into different anxiety
 levels. This column is used as the target variable for the classification models.
 
-1. Random Forest
+#### 1. Random Forest
 
 The random forest algorithm consists of a group of decision trees, each of which is built up of a
 data sample from a training set with replacement. The prediction will be determined differently
@@ -166,7 +155,7 @@ Implementation:
 RandomForestClassifier(max_depth=5, n_estimators=24, random_state=0).
 • The accuracy of the model is 62.12%
 
-2. Decision Tree Classifier
+#### 2. Decision Tree Classifier
 
 Decision Tree is a Supervised Machine Learning Algorithm that makes judgments based on a
 set of rules, similar to how people do. The technique attempts to entirely separate the dataset so
@@ -177,7 +166,7 @@ Implementation:
 DecisionTreeClassifier(max_leaf_nodes=26, random_state=42).
 • The accuracy of this model is 62.001%
 
-3. Logistic Regression
+#### 3. Logistic Regression
 
 Logistic regression is a classification system for determining the likelihood of an event's success
 or failure. When the dependent variable is binary in nature (0/1, True/False, Yes/No), it is
@@ -190,7 +179,7 @@ Implementation:
 LogisticRegression(C=10, solver='newton-cg').
 • The accuracy of this model is 62.24%
 
-4. Ridge Classification
+#### 4. Ridge Classification
 
 The Ridge Classifier, based on Ridge regression method, converts the label data into [-1, 1] and
 solves the problem with regression method. The highest value in prediction is accepted as a
@@ -201,8 +190,63 @@ Implementation:
 RidgeClassifier(alpha=0.1).
 • The accuracy of this model is 62.09%
 
-5. Support Vector Machine
+#### 5. Support Vector Machine
+
 The support vector machine algorithm's goal is to find a hyperplane in an N-dimensional space
 (N — the number of characteristics) that categorizes the data points clearly. Our goal is to
 discover a plane with the greatest margin, or the greatest distance between data points from
 different classes.
+
+Implementation:
+• Gridsearchcv is used to find the best estimators for improving accuracy, SVC(C=1000,
+gamma=0.01)
+• The accuracy of this model is 61.85%
+
+#### 6. Stochastic Gradient Boosting
+
+GB builds an additive model in a forward stage-wise fashion; it allows for the optimization of
+arbitrary differentiable loss functions. In each stage n_classes_ regression trees are fit on the
+negative gradient of the binomial or multinomial deviance loss function.
+
+Implementation:
+• Gridsearchcv is used to find the best estimators for improving accuracy,
+GradientBoostingClassifier(learning_rate=1, max_depth=1, n_estimators=250).
+• The accuracy of this model is 62.21%
+
+### 2. Regression Models
+
+Using ‘GAD_T’ as the target variable to predict the anxiety level of gamers.
+
+#### 7. Linear Regression
+
+Linear regression is a statistical classification model used to estimate the probability of an event
+occurring having been given some previous data related to, which can be considered as predictor
+data. It is based on Sigmoid function where it learns a linear relationship from the data and then
+introduces a non- linearity. 
+
+Implementation:
+• For linear regression, we used the parameter GAD_T to find the output score which is R
+squared value.
+14
+• The R-squared measure is based on the residuals which is the differences between what the
+model predicts for each data point and the actual value of each data point which we found
+out R2 value is 46.25% the RMSE value is 0.34. 
+
+#### 8. Lasso Regression
+
+Lasso regression employs shrinkage and is a form of linear regression. Data values are shrunk
+towards a central point, such as the mean, in shrinkage. Simple, sparse models are encouraged
+by the lasso approach (i.e. models with fewer parameters).
+
+Implementation:
+• The R2 score is 46.04% and the RMSE value is 3.446.
+
+## Impact of the Project Outcomes
+
+• The aim of the project was to predict the anxiety level of a gamer given a variety of factors.
+By providing details of the gamer, we can find the anxiety level of a gamer and tackle
+consequences related to it accordingly.
+
+• The SPIN, SWL, Narcissism values have a major impact on the anxiety level. The higher the
+SPIN level and Narcissism and lower the SWL level, greater is the anxiety. Men are affected
+more than women with gaming anxiety.
