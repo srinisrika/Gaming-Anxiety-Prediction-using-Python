@@ -100,18 +100,21 @@ columns and 13458 rows carrying out further data mining steps.
 ### 3. Data Exploration and Visualization:
 
 * **Relation between the attributes**
+
 To check the relation between each data we plotted correlation plot which explains the values near
 to 1 are highly correlated. As we can see in the above plot, the SPIN and GAD have 0.45 which
 says that people with high Social Phobia Inventory scores tend to have the General Anxiety
 Disorder. 
 
 * **Distribution of GAD and SPIN scores for all the age groups**
+
 A scatter plot is plotted to see how male, female, and other genders are affected by GAD and SPIN.
 From the below plots we can conclude that Males are affected from the anxiety disorder as the
 frequency of Males are distributed over all the age groups. Female are not at all affected after around
 the age 35. 
 
 * **Hours spent based on Employment Status and Gender**
+
 We plotted a Tree map to visualize the player’s employment status. Male players are dominating
 and the players who go to College/ University are the ones who play online games more ( total of
 around 138714 hours spent). Players who are unemployed stream the game for the total of 34775
@@ -119,6 +122,7 @@ hours. From the map we can conclude that players who are unemployed spend less t
 games compared to the students and employed ones.
 
 * **Impact of SPIN and SWL by hours**
+
 We have plotted Box plots to show the effect of SPIN and SWL by number of hours the online
 game is player. Here we have taken the X- axis by grouping 10 hours interval. From the first plot
 we can see that Social Phobia Inventory score is highest for the players who stream for an average
@@ -127,10 +131,12 @@ In the second plot, we have considered the satisfaction with life scores, which 
 players who stream for 10 hours. 
 
 * **Players from different educational degrees**
+
 To find the player’s educational background, we plotted the bar chart. The players who just have
 High school diploma tend to play more compared to any other degrees.
 
 * **GAD score across the World**
+
 To see which countries, have the most General Anxiety Disorder we have plotted a world map.
 From the map we can see that the players of Russia and USA have the most Anxiety scores
 compared to any other countries
